@@ -477,6 +477,7 @@ void JoypadLinux::process_joypads() {
 			continue;
 		}
 		for (uint32_t j = 0; j < joypad.events.size(); j++) {
+            print_line(String("processing joypad event {0} for joypad {1}").format(varray(j, i)));
 			const JoypadEvent &joypad_event = joypad.events[j];
 			// joypad_event may be tainted and out of MAX_KEY range, which will cause
 			// joypad.key_map[joypad_event.code] to crash

@@ -34,6 +34,7 @@
 #include "core/os/input.h"
 #include "core/os/os.h"
 #include "core/project_settings.h"
+#include "core/print_string.h"
 #include "scene/2d/collision_object_2d.h"
 #include "scene/2d/listener_2d.h"
 #include "scene/3d/camera.h"
@@ -1414,7 +1415,9 @@ void Viewport::_vp_input_text(const String &p_text) {
 }
 
 void Viewport::_vp_input(const Ref<InputEvent> &p_ev) {
-	if (disable_input) {
+    print_line(p_ev->as_text());
+
+    if (disable_input) {
 		return;
 	}
 

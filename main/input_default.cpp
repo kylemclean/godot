@@ -794,6 +794,7 @@ void InputDefault::joy_button(int p_device, int p_button, bool p_pressed) {
 	Joypad &joy = joy_names[p_device];
 	ERR_FAIL_INDEX(p_button, JOY_BUTTON_MAX);
 
+    print_line("joy_button");
 	if (joy.last_buttons[p_button] == p_pressed) {
 		return;
 	}
@@ -921,7 +922,7 @@ void InputDefault::joy_hat(int p_device, int p_val) {
 	for (int hat_direction = 0, hat_mask = 1; hat_direction < HAT_MAX; hat_direction++, hat_mask <<= 1) {
 		if ((p_val & hat_mask) != (cur_val & hat_mask)) {
 			if (map[hat_direction].type == TYPE_BUTTON) {
-				_button_event(p_device, map[hat_direction].index, p_val & hat_mask);
+				//_button_event(p_device, map[hat_direction].index, p_val & hat_mask);
 			}
 			if (map[hat_direction].type == TYPE_AXIS) {
 				_axis_event(p_device, map[hat_direction].index, (p_val & hat_mask) ? map[hat_direction].value : 0.0);
@@ -933,7 +934,8 @@ void InputDefault::joy_hat(int p_device, int p_val) {
 }
 
 void InputDefault::_button_event(int p_device, int p_index, bool p_pressed) {
-	Ref<InputEventJoypadButton> ievent;
+	print_line("_button_event");
+    Ref<InputEventJoypadButton> ievent;
 	ievent.instance();
 	ievent->set_device(p_device);
 	ievent->set_button_index(p_index);
