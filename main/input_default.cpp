@@ -922,7 +922,7 @@ void InputDefault::joy_hat(int p_device, int p_val) {
 	for (int hat_direction = 0, hat_mask = 1; hat_direction < HAT_MAX; hat_direction++, hat_mask <<= 1) {
 		if ((p_val & hat_mask) != (cur_val & hat_mask)) {
 			if (map[hat_direction].type == TYPE_BUTTON) {
-				//_button_event(p_device, map[hat_direction].index, p_val & hat_mask);
+				_button_event(p_device, map[hat_direction].index, p_val & hat_mask); // maybe remove
 			}
 			if (map[hat_direction].type == TYPE_AXIS) {
 				_axis_event(p_device, map[hat_direction].index, (p_val & hat_mask) ? map[hat_direction].value : 0.0);

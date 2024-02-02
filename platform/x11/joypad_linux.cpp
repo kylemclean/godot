@@ -502,7 +502,7 @@ void JoypadLinux::process_joypads() {
 							} else {
 								joypad.dpad &= ~(InputDefault::HAT_MASK_LEFT | InputDefault::HAT_MASK_RIGHT);
 							}
-							input->joy_hat(i, joypad.dpad);
+							//input->joy_hat(i, joypad.dpad);
 							break;
 
 						case ABS_HAT0Y:
@@ -515,7 +515,7 @@ void JoypadLinux::process_joypads() {
 							} else {
 								joypad.dpad &= ~(InputDefault::HAT_MASK_UP | InputDefault::HAT_MASK_DOWN);
 							}
-							input->joy_hat(i, joypad.dpad);
+							//input->joy_hat(i, joypad.dpad);
 							break;
 
 						default:
